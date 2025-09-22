@@ -15,7 +15,8 @@ Contact::Contact(const Contact& other)
 	: FirstName(other.FirstName), LastName(other.LastName), Phone(other.Phone), Darkest(other.Darkest) {}
 
 // Copy assignment operator
-Contact& Contact::operator=(const Contact& other) {
+Contact& Contact::operator=(const Contact& other)
+{
 	if (this != &other) {  // self-assignment check
 		FirstName = other.FirstName;
 		LastName = other.LastName;

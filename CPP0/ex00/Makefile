@@ -3,12 +3,10 @@ CXX = g++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = PhoneBook
+NAME = megaphone
 
 # Sources and objects
-SRCS	= Contact.cpp \
-		  PhoneBook.cpp \
-		  main.cpp
+SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Default rule
