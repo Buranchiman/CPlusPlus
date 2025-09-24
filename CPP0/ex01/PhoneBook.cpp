@@ -2,7 +2,6 @@
 
 PhoneBook::PhoneBook() : size(0) {}
 
-// Copy constructor
 PhoneBook::PhoneBook(const PhoneBook& other) : size(other.size)
 {
 	for (int i = 0; i < size; i++) {

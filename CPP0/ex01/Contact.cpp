@@ -26,17 +26,14 @@ Contact& Contact::operator=(const Contact& other)
 	return *this;
 }
 
-// Destructor
 Contact::~Contact() {}
 
-// Getters
 const std::string& Contact::getFirstName() const { return FirstName; }
 const std::string& Contact::getLastName() const { return LastName; }
 const std::string& Contact::getNickName() const { return NickName; }
 const std::string& Contact::getPhone() const { return Phone; }
 const std::string& Contact::getDarkest() const { return Darkest; }
 
-// Setters
 void Contact::setName(const std::string& n) { FirstName = n; }
 void Contact::setLastName(const std::string& l) { LastName = l; }
 void Contact::setNickName(const std::string& nn) { NickName = nn; }
