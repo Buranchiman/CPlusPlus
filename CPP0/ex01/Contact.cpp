@@ -16,14 +16,15 @@ Contact::Contact(const Contact& other)
 // Copy assignment operator
 Contact& Contact::operator=(const Contact& other)
 {
-	if (this != &other) {
+	if (this != &other)
+	{
 		FirstName = other.FirstName;
 		LastName = other.LastName;
 		NickName = other.NickName;
 		Phone = other.Phone;
 		Darkest = other.Darkest;
 	}
-	return *this;
+	return (*this);
 }
 
 Contact::~Contact() {}

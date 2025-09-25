@@ -1,15 +1,16 @@
 # Compiler
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = brainz
+NAME = zombieHorde
 
 # Sources and objects
 SRCS	= Zombie.cpp \
 		  newZombie.cpp \
-		  randomChump.cpp \
+		  zombieHorde.cpp \
 		  main.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # Default rule

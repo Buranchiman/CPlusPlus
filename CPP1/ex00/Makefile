@@ -3,10 +3,14 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = megaphone
+NAME = brainz
 
 # Sources and objects
-SRCS = megaphone.cpp
+SRCS	= Zombie.cpp \
+		  newZombie.cpp \
+		  randomChump.cpp \
+		  main.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # Default rule

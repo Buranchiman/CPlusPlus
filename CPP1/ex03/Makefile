@@ -3,10 +3,14 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = megaphone
+NAME = zombieHorde
 
 # Sources and objects
-SRCS = megaphone.cpp
+SRCS	= Weapon.cpp \
+		  HumanA.cpp \
+		  HumanB.cpp \
+		  main.cpp
+
 OBJS = $(SRCS:.cpp=.o)
 
 # Default rule
