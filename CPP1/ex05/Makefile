@@ -3,12 +3,10 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = violence
+NAME = harl
 
 # Sources and objects
-SRCS	= Weapon.cpp \
-		  HumanA.cpp \
-		  HumanB.cpp \
+SRCS	= Harl.cpp \
 		  main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
