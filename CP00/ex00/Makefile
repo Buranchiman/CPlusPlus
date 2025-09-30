@@ -1,14 +1,12 @@
 # Compiler
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror-std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = simpleFixed
+NAME = megaphone
 
 # Sources and objects
-SRCS	= Fixed.cpp \
-		  main.cpp
-
+SRCS = megaphone.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Default rule

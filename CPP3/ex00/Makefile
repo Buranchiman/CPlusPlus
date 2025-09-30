@@ -1,12 +1,12 @@
 # Compiler
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror-std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = simpleFixed
+NAME = ClapTrap
 
 # Sources and objects
-SRCS	= Fixed.cpp \
+SRCS	= ClapTrap.cpp \
 		  main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
