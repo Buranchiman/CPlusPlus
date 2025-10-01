@@ -1,34 +1,34 @@
 #include "Point.hpp"
 
+Fixed cross( Point const a, Point const b, Point const c )
+{
+	return (b.getX() - a.getX()) * (c.getY() - a.getY()) - (b.getY() - a.getY()) * (c.getX() - a.getX());
+}
+
 bool bsp( Point const a, Point const b, Point const c, Point const point)
 {
-	Fixed minX;
-	Fixed minY;
-	Fixed maxX;
-	Fixed maxY;
+	Fixed c1;
+	Fixed c2;
+	Fixed c3;
 
-	minX = Fixed::min(a.getX(), b.getX());
-	if (minX > c.getX())
-		minX = c.getX();
-	maxX = Fixed::max(a.getX(), b.getX());
-	if (maxX < c.getX())
-		maxX = c.getX();
-	minY = Fixed::min(a.getY(), b.getY());
-	if (minY > c.getY())
-		minY = c.getY();
-	maxY = Fixed::max(a.getY(), b.getY());
-	if (maxX < c.getY())
-		maxX = c.getY();
-	if (minX > point.getX() || maxX < point.getX() || minY > point.getY() || )
-	return (true);
+	c1 = cross(a, b, point);
+	c2 = cross(b, c, point);
+	c3 = cross(c, a, point);
+	if ((c1 > 0 && c2 > 0 && c3 > 0) || (c1 < 0 && c2 < 0 && c3 < 0))
+		return (true);
+	return (false);
 }
 
 int main( void )
 {
-	Point const a(-2, 2);
-	Point const b(1, 3);
-	Point const c(-7, 4);
+	Point const a(-2, -2);
+	Point const b(3, 3);
+	Point const c(7, 7);
 	Point point(1 , 1);
-	bsp(a, b, c, point);
+	Point point2(33, 33);
+	bool res = bsp(a, b, c, point);
+	std::cout << "result of bsp for point is " << res << std::endl;
+	res = bsp(a, b, c, point2);
+	std::cout << "result of bsp for point2 is " << res << std::endl;
 	return (0);
 }

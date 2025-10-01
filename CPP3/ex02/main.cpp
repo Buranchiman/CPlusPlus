@@ -13,6 +13,7 @@ int main(void)
 		a.attack("Bobby");
 		b.takeDamage(20);
 		c.attack("Bobby");
+		std::cout << c.getName() << " has " << c.getEnergy() << " left\n";
 	}
 	a.guardGate();
 	c.highFivesGuys();

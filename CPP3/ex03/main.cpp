@@ -1,19 +1,17 @@
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int main(void)
 {
-	ScavTrap b("Bobby");
-	ScavTrap a("Anna");
-	FragTrap c("Chris");
+	DiamondTrap j("Josuke");
+	DiamondTrap k("Kira");
 
-	for (int i = 0; i < 6; i++)
-	{
-		std::cout << i << "th time:\n";
-		a.attack("Bobby");
-		b.takeDamage(20);
-		c.attack("Bobby");
-	}
-	a.guardGate();
-	c.highFivesGuys();
+	k.guardGate();
+	j.highFivesGuys();
+	std::cout << "Kira has " << k.getEnergy() << " energy left\n";
+	k.attack("Josuke");
+	std::cout << "Kira has " << k.getEnergy() << " energy left\n";
+	j.whoAmI();
+	k.whoAmI();
 }

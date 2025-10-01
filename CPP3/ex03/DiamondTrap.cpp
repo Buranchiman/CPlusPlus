@@ -1,16 +1,31 @@
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap() {}
-
-DiamondTrap::DiamondTrap(const DiamondTrap& other) {
-	(void)other;
+DiamondTrap::DiamondTrap() : ClapTrap("default_clap_name"), ScavTrap(), FragTrap(), name("default")
+{
+	this->setHp(100);
+	setAd(30);
+	setEnergy(50);
+	std::cout << "DiamondTrap default constructor called" << std::endl;
 }
 
-DiamondTrap& DiamondTrap::operator=(const DiamondTrap& other) {
-	if (this != &other) {
-	}
-	return *this;
+DiamondTrap::DiamondTrap(std::string const n) : ClapTrap(n + "_clap_name"), ScavTrap(n), FragTrap(n), name(n)
+{
+	setHp(100);
+	setAd(30);
+	setEnergy(50);
+	std::cout << "DiamondTrap constructor called" << std::endl;
 }
 
-DiamondTrap::~DiamondTrap() {
+DiamondTrap::~DiamondTrap()
+{
+	std::cout << "DiamondTrap destructor has been called" << std::endl;
+}
+
+void DiamondTrap::attack(const std::string& target)
+{
+	ScavTrap::attack(target);
+}
+void DiamondTrap::whoAmI()
+{
+	std::cout << "This DiamonTrap is called " << name << " and its ClapTrap name is " << ClapTrap::getName() << std::endl;
 }

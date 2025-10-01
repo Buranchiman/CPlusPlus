@@ -3,12 +3,13 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = FragTrap
+NAME = DiamondTrap
 
 # Sources and objects
 SRCS	= ClapTrap.cpp \
 		  ScavTrap.cpp \
 		  FragTrap.cpp \
+		  DiamondTrap.cpp \
 		  main.cpp
 
 OBJS = $(SRCS:.cpp=.o)

@@ -84,3 +84,9 @@ unsigned int ClapTrap::getAd(void) const
 {
 	return (ad);
 }
+
+void ClapTrap::setHp(unsigned int h) { hp = h; }
+
+void ClapTrap::setEnergy(unsigned int e) { energy = e; }
+
+void ClapTrap::setAd(unsigned int a) { ad = a; }

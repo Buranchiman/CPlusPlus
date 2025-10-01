@@ -9,6 +9,7 @@ int main(void)
 	{
 		std::cout << i << "th time:\n";
 		a.attack("Bobby");
+		std::cout << a.getName() << " has " << a.getEnergy() << " left\n";
 		b.takeDamage(20);
 	}
 	a.guardGate();
