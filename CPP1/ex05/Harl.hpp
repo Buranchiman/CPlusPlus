@@ -20,4 +20,9 @@ public:
 	void complain( std::string level);
 };
 
+struct Entry {
+	const char* name;
+	void (Harl::*f)();
+};
+
 #endif

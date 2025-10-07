@@ -34,15 +34,21 @@ void Harl::error( void )
 
 void Harl::complain( std::string level )
 {
-	std::map<std::string, void (Harl::*)()> functions;
+	static const Entry states[] =
+	{
+		{"DEBUG", &Harl::debug},
+		{"INFO", &Harl::info},
+		{"WARNING", &Harl::warning},
+		{"ERROR", &Harl::error}
+	};
 
-	functions["debug"] = &Harl::debug;
-	functions["info"] = &Harl::info;
-	functions["warning"] = &Harl::warning;
-	functions["error"] = &Harl::error;
-
-	std::map<std::string, void (Harl::*)()>::iterator it = functions.find(level);
-	Harl dummy;
-	if (it != functions.end())
-		(dummy.*(it->second))();
+	for (int i = 0; i < 4; i++)
+	{
+		if (level == states[i].name)
+		{
+			(this->*states[i].f)();
+			return ;
+		}
+	}
+	std::cout<< "Harl is confused and doesnt know what to say\n";
 }

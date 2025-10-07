@@ -1,16 +1,19 @@
 # Compiler
-CXX      = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -MMD -MP
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
 # Project name (final executable)
-NAME = harlFilter
+NAME = animals
 
 # Sources and objects
-SRCS = Harl.cpp \
-       main.cpp
+SRCS	= Animal.cpp \
+		  Dog.cpp \
+		  Cat.cpp \
+		  WrongAnimal.cpp \
+		  WrongCat.cpp \
+		  main.cpp
 
 OBJS = $(SRCS:.cpp=.o)
-DEPS = $(OBJS:.o=.d)
 
 # Default rule
 all: $(NAME)
@@ -19,16 +22,13 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJS)
 
-# Compile .cpp into .o (and emit a .d file via -MMD)
+# Compile .cpp into .o
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Pull in header dependencies (safe if files don't exist yet)
--include $(DEPS)
-
-# Remove object and dep files
+# Remove object files
 clean:
-	rm -f $(OBJS) $(DEPS)
+	rm -f $(OBJS)
 
 # Remove objects and executable
 fclean: clean
@@ -38,4 +38,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-

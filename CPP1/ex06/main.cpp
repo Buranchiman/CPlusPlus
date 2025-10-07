@@ -8,22 +8,26 @@ void actual_complaint(int num)
 		case 0:
 		{
 			std::cout << "[ DEBUG ]\n";
-			dummy.complain("debug");
+			dummy.complain("DEBUG");
+			break;
 		}
 		case 1:
 		{
 			std::cout << "[ INFO ]\n";
-			dummy.complain("warning");
+			dummy.complain("INFO");
+			break;
 		}
 		case 2:
 		{
 			std::cout << "[ WARNING ]\n";
-			dummy.complain("warning");
+			dummy.complain("WARNING");
+			break;
 		}
 		case 3:
 		{
 			std::cout << "[ ERROR ]\n";
-			dummy.complain("error");
+			dummy.complain("ERROR");
+			break;
 		}
 	}
 }
@@ -35,15 +39,21 @@ int	main(int arc, char **arv)
 		std::cout << "Invalid number of parameters\n";
 		return (0);
 	}
-	std::map<std::string, int>levels;
-	levels["DEBUG"] = 0;
-	levels["INFO"] = 1;
-	levels["WARNING"] = 2;
-	levels["ERROR"] = 3;
-	std::map<std::string, int>::iterator it = levels.find(arv[1]);
-	int num;
-	if (it != levels.end())
-		num = it->second;
+	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int num = -1;
+	for (int i = 0; i < 4; i ++)
+	{
+		if (arv[1] == levels[i])
+			num = i;
+	}
+	if (num != -1)
+	{
+		while (num < 4)
+		{
+			actual_complaint(num);
+			num++;
+		}
+	}
 	else
 	{
 		std::cout << "[ Probably complaining about insignificant problems ]\n";
