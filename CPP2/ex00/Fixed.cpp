@@ -1,11 +1,11 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed() : value(0), fract(8)
+Fixed::Fixed() : value(0)
 {
 	std::cout << "Default constructor called\n";
 }
 
-Fixed::Fixed(const Fixed& other) : fract(8)
+Fixed::Fixed(const Fixed& other)
 {
 	std::cout << "Copy constructor called\n";
 	value = other.value;
