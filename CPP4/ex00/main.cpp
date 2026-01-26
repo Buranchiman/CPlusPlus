@@ -10,8 +10,8 @@ int main()
 	Dog			  dog;
 	Cat			  cat;
 	const WrongAnimal* wrong = new WrongCat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	std::cout << "\033[37m" << j->getType() << " " << std::endl;
+	std::cout << "\033[37m" << i->getType() << " " << std::endl;
 	i->makeSound();
 	cat.makeSound();
 	j->makeSound();

@@ -31,13 +31,11 @@ Fixed::~Fixed() {}
 
 int Fixed::getRawBits( void ) const
 {
-	std::cout << "getRawBits member function called\n";
 	return (value);
 }
 
 void Fixed::setRawBits( int const raw)
 {
-	std::cout << "setRawBits member function called\n";
 	value = raw;
 }
 
@@ -57,32 +55,32 @@ std::ostream& operator<<(std::ostream& stream, const Fixed& fixed)
 	return (stream);
 }
 
-bool Fixed::operator<(const Fixed& other)
+bool Fixed::operator<(const Fixed& other) const
 {
 	return (this->value < other.value);
 }
 
-bool Fixed::operator>(const Fixed& other)
+bool Fixed::operator>(const Fixed& other) const
 {
 	return (this->value > other.value);
 }
 
-bool Fixed::operator<=(const Fixed& other)
+bool Fixed::operator<=(const Fixed& other) const
 {
 	return (this->value <= other.value);
 }
 
-bool Fixed::operator>=(const Fixed& other)
+bool Fixed::operator>=(const Fixed& other) const
 {
 	return (this->value >= other.value);
 }
 
-bool Fixed::operator==(const Fixed& other)
+bool Fixed::operator==(const Fixed& other) const
 {
 	return (this->value == other.value);
 }
 
-bool Fixed::operator!=(const Fixed& other)
+bool Fixed::operator!=(const Fixed& other) const
 {
 	return (this->value != other.value);
 }
@@ -104,16 +102,19 @@ Fixed Fixed::operator-(const Fixed& other) const
 Fixed Fixed::operator*(const Fixed& other) const
 {
 	Fixed res;
-	long long tmp = static_cast<long long>(this->value * other.value);
-	res.setRawBits(static_cast<int>(tmp >> 8));
+	long long tmp = static_cast<long long>(this->value) * other.value;
+	res.setRawBits(static_cast<int>(tmp >> fract));
 	return (res);
 }
 
 Fixed Fixed::operator/(const Fixed& other) const
 {
 	Fixed res;
-	long long tmp = (static_cast<long long>(this->value) << fract) / other.value;
-	res.setRawBits(static_cast<int>(tmp));
+	if (other.value != 0)
+	{
+		long long tmp = (static_cast<long long>(this->value) << fract) / other.value;
+		res.setRawBits(static_cast<int>(tmp));
+	}
 	return (res);
 }
 
@@ -150,9 +151,7 @@ Fixed& Fixed::min(Fixed &a, Fixed &b)
 
 const Fixed& Fixed::min(const Fixed&a , const Fixed&b)
 {
-	Fixed	cpa(a);
-	Fixed	cpb(b);
-	return (cpa <= cpb) ? a:b;
+	return (a <= b) ? a:b;
 }
 
 Fixed& Fixed::max(Fixed &a, Fixed &b)
@@ -162,7 +161,5 @@ Fixed& Fixed::max(Fixed &a, Fixed &b)
 
 const Fixed& Fixed::max(const Fixed&a , const Fixed&b)
 {
-	Fixed	cpa(a);
-	Fixed	cpb(b);
-	return (cpa >= cpb) ? a:b;
+	return (a >= b) ? a:b;
 }

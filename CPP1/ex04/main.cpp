@@ -7,10 +7,11 @@ void	handmade_sed(std::string& line, std::string s1, std::string s2)
 	size_t	pos;
 
 	pos = line.find(s1);
-	if (pos != std::string::npos)
+	while (pos != std::string::npos)
 	{
 		line.erase(pos, s1.size());
 		line.insert(pos, s2);
+		pos = line.find(s1);
 	}
 }
 

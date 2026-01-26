@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap() : name("Claptrap"), hp(10), energy(10), ad(0)
 {
-	std::cout << "Claptrap default constructor called for " << std::endl;
+	std::cout << "Claptrap default constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(std::string const n) : name(n), hp(10), energy(10), ad(0)
@@ -17,7 +17,13 @@ ClapTrap::ClapTrap(const ClapTrap& other) : name(other.name), hp(other.hp), ener
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		name = other.name;
+		hp = other.hp;
+		energy = other.energy;
+		ad = other.ad;
+	}
 	return (*this);
 }
 

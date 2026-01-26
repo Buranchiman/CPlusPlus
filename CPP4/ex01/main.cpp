@@ -4,21 +4,16 @@
 int main()
 {
 	Animal *animalTab[10];
-	std::cout << "Testing for array" << std::endl;
+	std::cout << "\033[37mTesting for array" << std::endl;
 	for(int i = 0; i < 10; i ++)
 	{
-		std::cout << "----------------------------------------\nCreating elem[" << i << "] of tab" << std::endl;
+		std::cout << "\033[37m----------------------------------------\nCreating elem[" << i << "] of tab" << std::endl;
 		if (i < 5)
 			animalTab[i] = new Dog();
 		else
 			animalTab[i] = new Cat();
 	}
-	for(int j = 0; j < 10; j ++)
-	{
-		std::cout << "----------------------------------------\nDeleting elem[" << j << "] of tab :" << std::endl;
-		delete (animalTab[j]);
-	}
-	std::cout << "----------------------------------------\nTesting deep copies" << std::endl;
+	std::cout << "\033[37m----------------------------------------\nTesting deep copies" << std::endl;
 	Dog test;
 	test.fillBrain("bones");
 	test.showsIdea();
@@ -27,8 +22,13 @@ int main()
 	Cat test2;
 	test2.fillBrain("fishes");
 	test2.showsIdea();
-	Dog copy2(test);
+	Cat copy2(test2);
 	copy2.showsIdea();
-	std::cout << "----------------------------------------\nDestructors:" << std::endl;
+	std::cout << "\033[37m----------------------------------------\nDestructors:" << std::endl;
+	for(int j = 0; j < 10; j ++)
+	{
+		std::cout << "\033[37m----------------------------------------\nDeleting elem[" << j << "] of tab :" << std::endl;
+		delete (animalTab[j]);
+	}
 	return (0);
 }

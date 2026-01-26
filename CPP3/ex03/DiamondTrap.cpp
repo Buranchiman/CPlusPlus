@@ -2,7 +2,7 @@
 
 DiamondTrap::DiamondTrap() : ClapTrap("default_clap_name"), ScavTrap(), FragTrap(), name("default")
 {
-	this->setHp(100);
+	setHp(100);
 	setAd(30);
 	setEnergy(50);
 	std::cout << "DiamondTrap default constructor called" << std::endl;
@@ -27,5 +27,5 @@ void DiamondTrap::attack(const std::string& target)
 }
 void DiamondTrap::whoAmI()
 {
-	std::cout << "This DiamonTrap is called " << name << " and its ClapTrap name is " << ClapTrap::getName() << std::endl;
+	std::cout << "This DiamondTrap is called " << name << " and its ClapTrap name is " << ClapTrap::getName() << std::endl;
 }

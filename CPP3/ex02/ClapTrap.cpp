@@ -22,7 +22,13 @@ ClapTrap::ClapTrap(const ClapTrap& other) : name(other.name), hp(other.hp), ener
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 {
-	(void)other;
+	if (this != &other)
+	{
+		name = other.name;
+		hp = other.hp;
+		energy = other.energy;
+		ad = other.ad;
+	}
 	return (*this);
 }
 

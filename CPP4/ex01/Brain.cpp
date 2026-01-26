@@ -2,14 +2,14 @@
 
 Brain::Brain()
 {
-	std::cout << "Brain constructor called" << std::endl;
+	std::cout << "\033[35mBrain constructor called" << std::endl;
 }
 
 Brain::Brain(const Brain& other)
 {
 	for (int i =0; i < 100; i++)
 		ideas[i] = other.ideas[i];
-	std::cout << "Brain copy constructor called" << std::endl;
+	std::cout << "\033[35mBrain copy constructor called" << std::endl;
 }
 
 Brain& Brain::operator=(const Brain& other)
@@ -19,13 +19,13 @@ Brain& Brain::operator=(const Brain& other)
 		for (int i =0; i < 100; i++)
 			ideas[i] = other.ideas[i];
 	}
-	std::cout << "Brain assignment called" << std::endl;
+	std::cout << "\033[35mBrain assignment called" << std::endl;
 	return *this;
 }
 
 Brain::~Brain()
 {
-	std::cout << "Brain destructor called" << std::endl;
+	std::cout << "\033[35mBrain destructor called" << std::endl;
 }
 
 void Brain::thinkAbout(std::string idea)
