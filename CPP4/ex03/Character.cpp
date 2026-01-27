@@ -62,9 +62,11 @@ void Character::equip(AMateria* m)
 		if (!inventory[i])
 		{
 			inventory[i] = m;
+			std::cout << _name << " has equipped " << m->getType() << std::endl;
 			return ;
 		}
 	}
+	std::cout << _name << " couldnt equipped " << m->getType()  << " inventory full" << std::endl;
 }
 
 void Character::unequip(int idx)
@@ -72,6 +74,7 @@ void Character::unequip(int idx)
 	if (idx < 0 || idx > 3)
 		return ;
 	inventory[idx] = NULL;
+				std::cout << _name << " has unequipped item in slot " << idx << " of inventory"  << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)

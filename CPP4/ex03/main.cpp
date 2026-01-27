@@ -33,7 +33,7 @@ int main()
 	cpyPtr->use(1, *bob);
 	std::cout << "finishing copy tests ------------------------------" << std::endl;
 	std::cout << BOLDGREEN << "Starting unequip tests ------------------------------" << std::endl;
-	AMateria *floor[2];
+	AMateria *floor[5];
 	Character *airHead = new Character("airHead");
 	floor[0] = src->createMateria("ice");
 	floor[1] = src->createMateria("cure");
@@ -43,9 +43,17 @@ int main()
 	airHead->use(1, *bob);
 	airHead->unequip(0);
 	airHead->unequip(1);
-	delete(floor[0]);
-	delete(floor[1]);
 	std::cout  << "Finishing unequip tests ------------------------------" << WHITE << std::endl;
+	std::cout << BOLDBLUE << "Starting full inventory tests ------------------------------" << std::endl;
+	Character* richard = new Character("richard");
+	for (int i = 0; i < 5; i++)
+	{
+		if (i > 1)
+			floor[i] = src->createMateria("ice");
+		richard->equip(floor[i]);
+	}
+	delete floor[4];
+	delete richard;
 	delete airHead;
 	delete cpyPtr;
 	delete bob;

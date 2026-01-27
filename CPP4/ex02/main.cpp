@@ -24,6 +24,8 @@ int main()
 	test.showsIdea();
 	Dog copy(test);
 	copy.showsIdea();
+	Dog copy1(test);
+	copy1.showsIdea();
 	Cat test2;
 	test2.fillBrain("fishes");
 	test2.showsIdea();
