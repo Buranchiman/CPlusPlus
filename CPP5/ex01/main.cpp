@@ -1,9 +1,11 @@
 #include "Bureaucrat.hpp"
+#include "colors.hpp"
 
 int	main(void)
 {
 	Bureaucrat joe;
 
+	std:: cout << BOLDRED << "Running previous tests to ensure bureaucrat is still working -----------------------------" << std::endl;
 	std::cout << joe;
 	try
 	{
@@ -35,4 +37,7 @@ int	main(void)
 	{
 		std::cerr << e.what() << '\n';
 	}
+	std:: cout << "End of bureaucrat test -----------------------------" << WHITE << std::endl;
+	std:: cout << BOLDBLUE << "Running Form tests -----------------------------" << std::endl;
+
 }

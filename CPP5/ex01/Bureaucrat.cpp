@@ -52,3 +52,15 @@ std::ostream& operator<<(std::ostream &stream, const Bureaucrat& bureaucrat)
 	stream << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
 	return (stream);
 }
+
+void	Bureaucrat::signForm(Form form)
+{
+	try
+	{
+		form.beSigned(*this);
+	}
+	catch (Form::GradeTooLowException &excep)
+	{
+		std::cerr << excep.what() << std::endl;
+	}
+}
