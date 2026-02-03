@@ -1,5 +1,9 @@
 #include "Form.hpp"
 
+Form::GradeTooHighException::GradeTooHighException(const std::string& msg) : std::out_of_range(msg) {}
+
+Form::GradeTooLowException::GradeTooLowException(const std::string& msg) : std::out_of_range(msg) {}
+
 Form::Form() : _name("default"), _isSigned(false), _signGrade(75), _execGrade(75) {}
 
 Form::Form(const std::string name, bool isSigned, int signGrade, int execGrade) : _name(name), _isSigned(isSigned), _signGrade(signGrade), _execGrade(execGrade)
@@ -29,7 +33,7 @@ Form& Form::operator=(const Form& other)
 
 Form::~Form() {}
 
-void Form::beSigned(Bureaucrat bureaucrat)
+void Form::beSigned(Bureaucrat& bureaucrat)
 {
 	if (bureaucrat.getGrade() <= _signGrade)
 	{
@@ -38,4 +42,15 @@ void Form::beSigned(Bureaucrat bureaucrat)
 	}
 	else
 		throw GradeTooLowException(bureaucrat.getName() + " couldnt sign " + _name + " because their grade is too low");
+}
+
+const std::string	Form::getName() const { return(_name); }
+bool	Form::getSigned() const { return(_isSigned) ;}
+int	Form::getSignGrade() const { return(_signGrade) ;}
+int	Form::getExecGrade() const { return(_execGrade) ;}
+
+std::ostream& operator<<(std::ostream &stream, const Form& form)
+{
+	stream << form.getName() << ", form grade " << form.getSignGrade() << ", exec grade " << form.getExecGrade()  << (form.getSigned() == false ? " isnt signed" : "is signed") << std::endl;
+	return (stream);
 }

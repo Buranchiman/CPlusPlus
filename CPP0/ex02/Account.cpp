@@ -15,7 +15,7 @@ void Account:: _displayTimestamp( void)
 	std::time_t t = std::time(NULL);
 	std::tm *tm_info = std::localtime(&t);
 
-	// Format: YYYYMMDD_HHMMSS
+	// AFormat: YYYYMMDD_HHMMSS
 	std::strftime(buffer, sizeof(buffer), "%Y%m%d_%H%M%S", tm_info);
 	std::cout << '[' << buffer << ']' << ' ';
 	//std::cout << "[19920104_091532] ";

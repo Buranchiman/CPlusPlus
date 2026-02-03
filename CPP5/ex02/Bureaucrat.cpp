@@ -53,13 +53,13 @@ std::ostream& operator<<(std::ostream &stream, const Bureaucrat& bureaucrat)
 	return (stream);
 }
 
-void	Bureaucrat::signForm(Form form)
+void	Bureaucrat::signAForm(AForm& AForm)
 {
 	try
 	{
-		form.beSigned(*this);
+		AForm.beSigned(*this);
 	}
-	catch (Form::GradeTooLowException &excep)
+	catch (AForm::GradeTooLowException &excep)
 	{
 		std::cerr << excep.what() << std::endl;
 	}

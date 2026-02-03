@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "colors.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 int	main(void)
 {
@@ -39,10 +39,10 @@ int	main(void)
 		std::cerr << e.what() << '\n';
 	}
 	std:: cout << "End of bureaucrat test -----------------------------" << WHITE << std::endl;
-	std:: cout << BOLDBLUE << "Running Form tests -----------------------------" << std::endl;
+	std:: cout << BOLDBLUE << "Running AForm tests -----------------------------" << std::endl;
 	try
 	{
-		Form	toohigh("toohigh", false, 0, 75);
+		AForm	toohigh("toohigh", false, 0, 75);
 	}
 	catch(const std::exception& e)
 	{
@@ -50,24 +50,24 @@ int	main(void)
 	}
 	try
 	{
-		Form	toolow("toolow", false, 75, 151);
+		AForm	toolow("toolow", false, 75, 151);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	Form	basic("basic", false, 75, 75);
+	AForm	basic("basic", false, 75, 75);
 	std::cout << basic;
 	try
 	{
-		low.signForm(basic);
+		low.signAForm(basic);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
 	std::cout << basic;
-	high.signForm(basic);
+	high.signAForm(basic);
 	std::cout << basic;
-	std:: cout << "End of Form tests -----------------------------" << WHITE << std::endl;
+	std:: cout << "End of AForm tests -----------------------------" << WHITE << std::endl;
 }
