@@ -25,6 +25,7 @@ public:
 	void	promote();
 	void	demote();
 	void signAForm(AForm& AForm);
+	void executeForm(AForm const & form) const;
 };
 
 std::ostream& operator<< (std::ostream &stream, const Bureaucrat& bureaucrat);

@@ -13,6 +13,8 @@ private:
 	int					_signGrade;
 	int					_execGrade;
 	std::string			_target;
+protected:
+	virtual void execute(Bureaucrat const & executor) const = 0;
 public:
 	class GradeTooHighException : public std::out_of_range
 	{
@@ -28,7 +30,7 @@ public:
 	AForm(const std::string name, bool isSigned, int signGrade, int execGrade, std::string target);
 	AForm(const AForm& other);
 	AForm& operator=(const AForm& other);
-	~AForm();
+	virtual ~AForm();
 
 	void				beSigned(Bureaucrat& bureaucrat);
 	const std::string	getName() const;
@@ -36,7 +38,7 @@ public:
 	int					getSignGrade() const;
 	int					getExecGrade() const;
 	std::string			getTarget() const ;
-	virtual void execute(Bureaucrat const & executor) const = 0;
+	void				verifyAndRun(Bureaucrat const & executor) const;
 };
 
 std::ostream& operator<< (std::ostream &stream, const AForm& AForm);

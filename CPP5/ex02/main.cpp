@@ -1,6 +1,7 @@
 #include "Bureaucrat.hpp"
 #include "colors.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int	main(void)
 {
@@ -42,7 +43,7 @@ int	main(void)
 	std:: cout << BOLDBLUE << "Running AForm tests -----------------------------" << std::endl;
 	try
 	{
-		AForm	toohigh("toohigh", false, 0, 75);
+		ShrubberyCreationForm	toohigh;
 	}
 	catch(const std::exception& e)
 	{
@@ -50,13 +51,13 @@ int	main(void)
 	}
 	try
 	{
-		AForm	toolow("toolow", false, 75, 151);
+		ShrubberyCreationForm	toolow;
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	AForm	basic("basic", false, 75, 75);
+	ShrubberyCreationForm	basic("bush");
 	std::cout << basic;
 	try
 	{
@@ -69,5 +70,7 @@ int	main(void)
 	std::cout << basic;
 	high.signAForm(basic);
 	std::cout << basic;
+	low.executeForm(basic);
+	high.executeForm(basic);
 	std:: cout << "End of AForm tests -----------------------------" << WHITE << std::endl;
 }

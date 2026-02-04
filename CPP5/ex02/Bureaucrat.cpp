@@ -64,3 +64,17 @@ void	Bureaucrat::signAForm(AForm& AForm)
 		std::cerr << excep.what() << std::endl;
 	}
 }
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.verifyAndRun(*this);
+		std::cout << _name << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+
+}

@@ -18,7 +18,7 @@ AForm::AForm(const std::string name, bool isSigned, int signGrade, int execGrade
 		throw GradeTooLowException("Invalid execGrade");
 }
 
-AForm::AForm(const AForm& other) : _name(other._name), _isSigned(other._isSigned), _signGrade(other._signGrade), _execGrade(other._execGrade) {}
+AForm::AForm(const AForm& other) : _name(other._name), _isSigned(other._isSigned), _signGrade(other._signGrade), _execGrade(other._execGrade), _target(other._target) {}
 
 AForm& AForm::operator=(const AForm& other)
 {
@@ -52,4 +52,13 @@ std::ostream& operator<<(std::ostream &stream, const AForm& AForm)
 {
 	stream << AForm.getName() << ", AForm grade " << AForm.getSignGrade() << ", exec grade " << AForm.getExecGrade()  << (AForm.getSigned() == false ? " isnt signed" : "is signed") << std::endl;
 	return (stream);
+}
+
+void	AForm::verifyAndRun(Bureaucrat const & executor) const
+{
+	if (_execGrade < executor.getGrade())
+		throw AForm::GradeTooLowException(executor.getName() + " couldnt execute " + _name + " because their grade is too low");
+	else if (!_isSigned)
+		throw AForm::GradeTooLowException(executor.getName() + " couldnt execute " + _name + " because it isnt signed"); // peut-etre creer une excetion a part entiere
+	execute(executor);
 }

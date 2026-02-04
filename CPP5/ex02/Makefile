@@ -8,6 +8,7 @@ NAME = AForms
 # Sources and objects
 SRCS	= Bureaucrat.cpp \
 		  AForm.cpp \
+		  ShrubberyCreationForm.cpp \
 		  main.cpp
 
 OBJS = $(SRCS:.cpp=.o)

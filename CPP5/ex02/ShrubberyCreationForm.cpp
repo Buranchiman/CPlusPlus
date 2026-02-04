@@ -17,32 +17,34 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	std::ofstream file(AForm::getTarget() + "_shrubbery");
+  (void)executor;
+  std::string filename = AForm::getTarget() + "_shrubbery";
+	std::ofstream file(filename.c_str());
 	if (!file.is_open())
 	{
 		std::cerr << "Failed to open file\n";
 		return ;
 	}
-	file << R"(
-                     .o00o
-                   o000000oo
-                  00000000000o
-                 00000000000000
-              oooooo  00000000  o88o
-           ooOOOOOOOoo  ```''  888888
-         OOOOOOOOOOOO'.qQQQQq. `8888'
-        oOOOOOOOOOO'.QQQQQQQQQQ/.88'
-        OOOOOOOOOO'.QQQQQQQQQQ/ /q
-         OOOOOOOOO QQQQQQQQQQ/ /QQ
-           OOOOOOOOO `QQQQQQ/ /QQ'
-             OO:F_P:O `QQQ/  /Q'
-                \\. \ |  // |
-                d\ \\\|_////
-                qP| \\ _' `|Ob
-                   \  / \  \Op
-                   |  | O| |
-           _       /\. \_/ /\
-            `---__/|_\\   //|  __
-                  `-'  `-'`-'-')";
+  file <<
+  "                     .o00o\n"
+  "                   o000000oo\n"
+  "                  00000000000o\n"
+  "                 00000000000000\n"
+  "              oooooo  00000000  o88o\n"
+  "           ooOOOOOOOoo  ```''  888888\n"
+  "         OOOOOOOOOOOO'.qQQQQq. `8888'\n"
+  "        oOOOOOOOOOO'.QQQQQQQQQQ/.88'\n"
+  "        OOOOOOOOOO'.QQQQQQQQQQ/ /q\n"
+  "         OOOOOOOOO QQQQQQQQQQ/ /QQ\n"
+  "           OOOOOOOOO `QQQQQQ/ /QQ'\n"
+  "             OO:F_P:O `QQQ/  /Q'\n"
+  "                \\\\. \\ |  // |\n"
+  "                d\\ \\\\\\|_////\n"
+  "                qP| \\\\ _' `|Ob\n"
+  "                   \\  / \\  \\Op\n"
+  "                   |  | O| |\n"
+  "           _       /\\. \\_/ /\\\n"
+  "            `---__/|_\\\\   //|  __\n"
+  "                  `-'  `-'`-'-'\n";
 	file.close();
 }
