@@ -1,6 +1,6 @@
 # Compiler
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 # Project name (final executable)
 NAME = AForms
@@ -8,6 +8,7 @@ NAME = AForms
 # Sources and objects
 SRCS	= Bureaucrat.cpp \
 		  AForm.cpp \
+		  Intern.cpp \
 		  PresidentialPardonForm.cpp \
 		  RobotomyRequestForm.cpp \
 		  ShrubberyCreationForm.cpp \

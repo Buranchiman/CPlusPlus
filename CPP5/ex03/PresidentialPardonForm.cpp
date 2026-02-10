@@ -20,3 +20,8 @@ void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 	(void)executor;
 	std::cout << AForm::getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }
+
+AForm* PresidentialPardonForm::create(std::string target)
+{
+	return (new PresidentialPardonForm(target));
+}

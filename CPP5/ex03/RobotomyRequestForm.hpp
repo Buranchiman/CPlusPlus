@@ -15,6 +15,7 @@ public:
 	RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 	~RobotomyRequestForm();
 
+	static	AForm* create(std::string target);
 	void execute(Bureaucrat const & executor) const;
 };
 

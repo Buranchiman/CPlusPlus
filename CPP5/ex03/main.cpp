@@ -4,6 +4,7 @@
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
@@ -83,4 +84,18 @@ int	main(void)
 	high.signAForm(pres);
 	high.executeForm(pres);
 	std:: cout << "End of AForm tests -----------------------------" << WHITE << std::endl;
+	std:: cout << BOLDGREEN << "Starting Intern tests -----------------------------" << std::endl;
+	Intern	intern;
+	AForm*	test = intern.makeForm("shrubbery creation", "bigger_bush");
+	try
+	{
+		low.signAForm(*test);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	low.executeForm(*test);
+	high.signAForm(*test);
+	high.executeForm(*test);
 }
