@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <sstream>
+#include <cmath>
+#include <limits>
+#include <iomanip>
 
 class ScalarConverter
 {
@@ -15,4 +18,4 @@ public:
 	static void convert(std::string input);
 };
 
-#endif /* ScalarConverter_HPP */
+#endif
