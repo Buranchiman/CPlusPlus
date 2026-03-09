@@ -4,6 +4,8 @@ AForm::GradeTooHighException::GradeTooHighException(const std::string& msg) : st
 
 AForm::GradeTooLowException::GradeTooLowException(const std::string& msg) : std::out_of_range(msg) {}
 
+AForm::FormNotSignedException::FormNotSignedException(const std::string& msg) : std::runtime_error(msg) {}
+
 AForm::AForm() : _name("default"), _isSigned(false), _signGrade(75), _execGrade(75), _target("home") {}
 
 AForm::AForm(const std::string name, bool isSigned, int signGrade, int execGrade, std::string target) : _name(name), _isSigned(isSigned), _signGrade(signGrade), _execGrade(execGrade), _target(target)
@@ -59,6 +61,7 @@ void	AForm::verifyAndRun(Bureaucrat const & executor) const
 	if (_execGrade < executor.getGrade())
 		throw AForm::GradeTooLowException(executor.getName() + " couldnt execute " + _name + " because their grade is too low");
 	else if (!_isSigned)
-		throw AForm::GradeTooLowException(executor.getName() + " couldnt execute " + _name + " because it isnt signed"); // peut-etre creer une excetion a part entiere
+		throw AForm::FormNotSignedException(executor.getName() + " couldnt execute " + _name + " because it isnt signed");
+	std::cout << executor.getName() << " executed " << _name << std::endl;
 	execute(executor);
 }

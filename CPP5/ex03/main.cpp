@@ -86,16 +86,26 @@ int	main(void)
 	std:: cout << "End of AForm tests -----------------------------" << WHITE << std::endl;
 	std:: cout << BOLDGREEN << "Starting Intern tests -----------------------------" << std::endl;
 	Intern	intern;
-	AForm*	test = intern.makeForm("shrubbery creation", "bigger_bush");
+	AForm*	shrub = intern.makeForm("shrubbery creation", "bigger_bush");
 	try
 	{
-		low.signAForm(*test);
+		low.signAForm(*shrub);
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
-	low.executeForm(*test);
-	high.signAForm(*test);
-	high.executeForm(*test);
+	low.executeForm(*shrub);
+	high.signAForm(*shrub);
+	high.executeForm(*shrub);
+	AForm	*pardon = intern.makeForm("presidential pardon", "Crazy Billy");
+	high.signAForm(*pardon);
+	high.executeForm(*pardon);
+	AForm	*optimus = intern.makeForm("robotomy request", "Astro boy");
+	high.signAForm(*optimus);
+	high.executeForm(*optimus);
+	std:: cout << "End of Intern tests -----------------------------" << WHITE << std::endl;
+	delete (optimus);
+	delete (shrub);
+	delete (pardon);
 }

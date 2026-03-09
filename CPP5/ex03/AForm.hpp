@@ -26,6 +26,11 @@ public:
 		public:
 			explicit GradeTooLowException(const std::string& msg);
 	};
+	class FormNotSignedException : public std::runtime_error
+	{
+		public:
+			explicit FormNotSignedException(const std::string& msg);
+	};
 	AForm();
 	AForm(const std::string name, bool isSigned, int signGrade, int execGrade, std::string target);
 	AForm(const AForm& other);
