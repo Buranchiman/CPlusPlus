@@ -18,5 +18,6 @@ int main( void )
 	void	*first = NULL;
 	void	*second = &c;
 	std::cout << "max pointer = " << ::max(first, second) << std::endl;
+	std::cout << "min pointer = " << ::min(first, second) << std::endl;
 	return 0;
 }
