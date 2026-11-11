@@ -37,8 +37,6 @@ unsigned int Span::shortestSpan() const
 	std::vector<int> copy(_array);
 	std::sort(copy.begin(), copy.end());
 
-	// Once sorted, the smallest gap is always between two neighbours.
-	// Use long so that e.g. INT_MAX - INT_MIN does not overflow.
 	unsigned int shortest = static_cast<unsigned int>(
 	    static_cast<long>(copy[1]) - static_cast<long>(copy[0]));
 	for (std::vector<int>::size_type i = 2; i < copy.size(); i++)
@@ -69,4 +67,12 @@ unsigned int Span::size() const
 unsigned int Span::capacity() const
 {
     return _N;
+}
+
+void Span::addRange(std::vector<int>::const_iterator begin,
+                    std::vector<int>::const_iterator end)
+{
+    if (static_cast<unsigned long>(std::distance(begin, end)) > _N - _array.size())
+        throw SpanFullException("Cannot add range: not enough space left in Span");
+    _array.insert(_array.end(), begin, end);
 }

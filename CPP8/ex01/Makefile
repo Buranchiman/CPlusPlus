@@ -3,7 +3,7 @@ CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = span
 
-SRCS	= Span.cpp
+SRCS	= main.cpp Span.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
