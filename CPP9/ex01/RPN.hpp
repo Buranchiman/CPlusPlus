@@ -1,15 +1,24 @@
 #ifndef RPN_HPP
 #define RPN_HPP
 
-#include <cctype>
-#include <cstdlib>
-#include <iostream>
-#include <stdexcept>
+#include <stack>
 #include <string>
+#include <limits.h>
+#include <iostream>
+#include <exception>
 
-class RPN
+class RPN 
 {
+    private:
+        std::stack<int> _numbers;
+public:
+    RPN();
+    RPN(const RPN& other);
+    RPN& operator=(const RPN& other);
+    ~RPN();
 
+
+    bool solve(std::string operation);
 };
 
-#endif
+#endif /* RPN_HPP */
