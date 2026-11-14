@@ -16,16 +16,16 @@ RPN& RPN::operator=(const RPN& other)
 
 RPN::~RPN() {}
 
-bool do_operations(char c, std::stack<int> &numbers)
+void do_operations(char c, std::stack<int> &numbers)
 {
-    int left;
-    int right;
+    long long left;
+    long long right;
 
-    right = numbers.top();
+    right = static_cast<long long>(numbers.top());
     numbers.pop();
-    left = numbers.top();
+    left = static_cast<long long>(numbers.top());
     numbers.pop();
-    long long res;
+    long long res = 0;
     switch (c)
     {
         case ('+') :
@@ -45,6 +45,8 @@ bool do_operations(char c, std::stack<int> &numbers)
         }
         case ('/') :
         {
+            if (right == 0)
+                throw(std::invalid_argument("Error cannot divide by 0"));
             res = left / right;
             break;
         }
@@ -52,34 +54,38 @@ bool do_operations(char c, std::stack<int> &numbers)
             break;
     }
     if (res < INT_MIN || res > INT_MAX)
-        return (false);
+        throw(std::invalid_argument("Error operation overflowing int max"));
     else
     {
         numbers.push(static_cast<int>(res));
-        return (true);
+        return ;
     }
 }
 
-bool RPN::solve(std::string operation)
+void RPN::solve(std::string operation)
 {
     if (operation.find_first_not_of("0123456789 +-/*") != operation.npos)
-        return (false);
+        throw(std::invalid_argument("Error unvalid character in parameter"));
     int size = operation.size();
     for (int i =  0; i < size; i++)
     {
         if (i % 2 == 1 && operation[i] != ' ')
-            return (false);
+            throw(std::invalid_argument("Error incorrect number space between numbers/operators"));
+        if (i == size - 1 && operation[i] == ' ')
+            throw(std::invalid_argument("Error trailing space"));
         if (std::string("+-/*").find(operation[i]) != std::string::npos)
         {
             if (_numbers.size() < 2)
-                return (false);
+                throw(std::invalid_argument("Error consecutive operators"));
             else
                 do_operations(operation[i], _numbers);
         }
         if ( '0' <= operation[i] && operation[i] <= '9')
-            _numbers.push(operation[i] - '0');
+             _numbers.push(operation[i] - '0');
     }
+    if (_numbers.size() != 1)
+        throw(std::invalid_argument("Error incorrect number of numbers left at the end of operation"));
     std::cout << _numbers.top() << std::endl;
     _numbers.pop();
-    return (true);
+    return ;
 }

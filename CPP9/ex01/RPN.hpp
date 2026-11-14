@@ -18,7 +18,7 @@ public:
     ~RPN();
 
 
-    bool solve(std::string operation);
+    void solve(std::string operation);
 };
 
 #endif /* RPN_HPP */
