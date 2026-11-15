@@ -35,5 +35,4 @@ int main(int arc, char **arv)
         std::cerr << RED << "Exception: " << e.what() << RESET << std::endl;
     }
     return (0);
-    //potentiellement throw des exceptions catch par le main ???
 }
